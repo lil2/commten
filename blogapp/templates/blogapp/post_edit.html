@@ -1,0 +1,15 @@
+{% extends 'blogapp/base.html' %}
+{% block pagedown %}
+     {{ post_form.media }}
+{% endblock pagedown %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div>
+    <form method="POST" class="post-form" enctype="multipart/form-data">{% csrf_token %}
+        {{ post_form|crispy}}
+        <button type="submit" class="btn btn-primary">Post</button>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,115 @@
+{% load staticfiles %}
+{% load widget_tweaks %}
+<html>
+<head>
+    {% block pagedown %}{% endblock pagedown %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'custom_css/reset.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'custom_css/my_css.css' %}" >
+    <script src="{% static 'bower_components/jquery/dist/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
+    <script src="{% static 'custom_js/my_js.js' %}"></script>
+</head>
+<body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7&appId=251648261836948";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+ <!-- Navigation -->
+   <nav class="navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">PhotoGram</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          {% if user.is_authenticated %}
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="{% url 'posts' %}">Post</a></li>
+            <li><a href="{% url 'music' %}">Music</a></li>
+            <li><a href="#">Album</a></li>
+            <li><a href="{% url 'follow' %}">Find People</a></li>
+            <li><a href="#">Welcome, {{ user.username }}. Thanks for logging in.</a></li>
+            <a href="{% url 'logout' %}" class="btn btn-primary btn-sm pull-right" style="margin-top: 1.5%">Logout</a>
+          </ul>
+          {% else %}
+          <div class="col-md-5 col-md-offset-5" style="margin-top:0.4%; margin-right: -10%;">
+              <form class="form-inline" method="POST" action="/login/">{% csrf_token %}
+                  <div class="input-group input-group-sm">
+                    <span class="input-group-addon" id="sizing-addon1">@</span>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Enter email">
+                  </div>
+                  <div class="input-group input-group-sm">
+                    <span class="input-group-addon" id="sizing-addon2">#</span>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-sm">Log in</button>
+              </form>
+          </div>
+
+         <div class="col-md-2"  style="padding-top:0.4%;"> <a href="#lala" class="btn btn-danger btn-sm"  data-toggle="modal" data-target=".bs-example-modal-lg">New User ? Sign up Today</a></div>
+            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Registration</h4>
+                  </div>
+                  <div class="modal-body">
+                      <form method="POST" id="new_user_form">{% csrf_token %}
+                        <div class="form-group">
+                            <label for="recipient-name" class="control-label">Username:</label>
+                            <input type="text" class="form-control" id="new_user_username">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="control-label">Password:</label>
+                             <input type="password" class="form-control" id="new_user_password">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Sign Up</button>
+                        </div>
+                      </form>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+        <!-- Portfolio Item Heading -->
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">Simpithy</h1>
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+
+
+</html>

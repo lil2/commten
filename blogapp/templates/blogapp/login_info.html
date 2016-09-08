@@ -1,0 +1,23 @@
+{% extends "blogapp/base.html" %}
+{% load staticfiles %}
+{% block content %}
+{% if user.is_authenticated %}
+<div class="alert alert-success" role="alert">
+You're logging in successfully!!! Redirecting to home page in 3 seconds.
+<p><a href="{{ home }}">Back to Home Page</a></p>
+<meta http-equiv="refresh" content="3;url={{ home }}">
+</div>
+{% else %}
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Error:</span>
+  The username and password were incorrect or blank. Please re-enter again.
+</div>
+
+<div class="alert alert-info" role="alert">
+    If you don't have an account yet, please sign up by clicking the sign up button on top right of the page.
+    <p><a href="{{ home }}">Back to Home Page</a></p>
+{#  <meta http-equiv="refresh" content="10;url={{ refresh_url }}">#}
+</div>
+{% endif %}
+{% endblock %}

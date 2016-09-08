@@ -1,0 +1,32 @@
+{% extends 'blogapp/base.html' %}
+{% load staticfiles %}
+{% block content %}
+<h1>User Lists</h1>
+
+<div class="list-group">{% csrf_token %}
+  {% for user in users %}
+      <div class="col-md-3">
+        <div class="bs-callout bs-callout-info text-center text-capitalize text-muted">
+            {{ user.username }}
+        <p></p>
+        <p>
+            <a id={{ user.id }} onclick="follow_btn($(this))"
+                    {% if user in followees%}
+                        id={{ user.id }}
+                        class="btn btn-primary"
+                    {% else %}
+                        class="btn btn-warning"
+                    {% endif %}>
+                    {% if user in followees%}
+                        Followed
+                    {% else %}
+                        Follow
+                    {% endif %}
+            </a>
+        </p>
+        </div>
+      </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
