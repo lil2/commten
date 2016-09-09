@@ -1,6 +1,7 @@
 {% extends "blogapp/base.html" %}
 {% load staticfiles %}
 {% block content %}
+<div class="container">
 {% if user.is_authenticated %}
 <div class="alert alert-success" role="alert">
 You're logging in successfully!!! Redirecting to home page in 3 seconds.
@@ -15,9 +16,9 @@ You're logging in successfully!!! Redirecting to home page in 3 seconds.
 </div>
 
 <div class="alert alert-info" role="alert">
-    If you don't have an account yet, please sign up by clicking the sign up button on top right of the page.
-    <p><a href="{{ home }}">Back to Home Page</a></p>
-{#  <meta http-equiv="refresh" content="10;url={{ refresh_url }}">#}
+    If you don't have an account yet, please sign up by clicking the link below.
+    <p><a href="{% url 'signup' %}">Sign Up Now</a></p>
 </div>
 {% endif %}
+</div>
 {% endblock %}

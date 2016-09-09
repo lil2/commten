@@ -5,7 +5,7 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 {% block content %}
-<div>
+<div class="container">
     <form method="POST" class="post-form" enctype="multipart/form-data">{% csrf_token %}
         {{ post_form|crispy}}
         <button type="submit" class="btn btn-primary">Post</button>

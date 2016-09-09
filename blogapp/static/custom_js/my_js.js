@@ -1,5 +1,4 @@
 $( document ).ready(function() {
-    post_ajax_signup_form();
     $(".content-markdown").each(function () {
         var content = $(this).text();
         console.log(content);
@@ -9,29 +8,6 @@ $( document ).ready(function() {
     });
 
 });
-
-
-
-// Passing user signup values in modal to backend using ajax
-function post_ajax_signup_form() {
-    $( document ).on('submit','#new_user_form', function (e) {
-       e.preventDefault();
-        $.ajax({
-            type:'POST',
-            url: '/user/create/',
-            data:{
-                name: $('#new_user_username').val(),
-                pwd: $('#new_user_password').val(),
-                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
-            },
-            success:function () {
-                alert("Welcome New User!");
-                window.location = "/";
-            }
-        });
-    });
-}
-
 
 // Sending ajax to toggle button on following
 function follow_btn(caller) {

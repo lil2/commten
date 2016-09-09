@@ -1,6 +1,9 @@
 {% load staticfiles %}
 {% load widget_tweaks %}
 <html>
+
+<!-- Head Section includes static files ( CSS, javascript, and third party plugin style ) -->
+
 <head>
     {% block pagedown %}{% endblock pagedown %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +15,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
     <script src="{% static 'custom_js/my_js.js' %}"></script>
 </head>
+
+<!-- Body Section -->
+
 <body>
+
+<!-- FaceBook Comment Plugin Section -->
+
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -21,94 +30,96 @@
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7&appId=251648261836948";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
- <!-- Navigation -->
-   <nav class="navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">PhotoGram</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-          {% if user.is_authenticated %}
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="{% url 'posts' %}">Post</a></li>
-            <li><a href="{% url 'music' %}">Music</a></li>
-            <li><a href="#">Album</a></li>
-            <li><a href="{% url 'follow' %}">Find People</a></li>
-            <li><a href="#">Welcome, {{ user.username }}. Thanks for logging in.</a></li>
-            <a href="{% url 'logout' %}" class="btn btn-primary btn-sm pull-right" style="margin-top: 1.5%">Logout</a>
-          </ul>
-          {% else %}
-          <div class="col-md-5 col-md-offset-5" style="margin-top:0.4%; margin-right: -10%;">
-              <form class="form-inline" method="POST" action="/login/">{% csrf_token %}
-                  <div class="input-group input-group-sm">
-                    <span class="input-group-addon" id="sizing-addon1">@</span>
-                    <input type="text" class="form-control" id="email" name="email" placeholder="Enter email">
-                  </div>
-                  <div class="input-group input-group-sm">
-                    <span class="input-group-addon" id="sizing-addon2">#</span>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                  </div>
-                  <button type="submit" class="btn btn-primary btn-sm">Log in</button>
-              </form>
-          </div>
 
-         <div class="col-md-2"  style="padding-top:0.4%;"> <a href="#lala" class="btn btn-danger btn-sm"  data-toggle="modal" data-target=".bs-example-modal-lg">New User ? Sign up Today</a></div>
-            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="exampleModalLabel">Registration</h4>
-                  </div>
-                  <div class="modal-body">
-                      <form method="POST" id="new_user_form">{% csrf_token %}
-                        <div class="form-group">
-                            <label for="recipient-name" class="control-label">Username:</label>
-                            <input type="text" class="form-control" id="new_user_username">
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="control-label">Password:</label>
-                             <input type="password" class="form-control" id="new_user_password">
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Sign Up</button>
-                        </div>
-                      </form>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          {% endif %}
-        </div>
-      </div>
-    </nav>
 
-    <div class="container">
-        <!-- Portfolio Item Heading -->
-        <div class="row">
-            <div class="col-md-12">
-                <h1 class="text-center">Simpithy</h1>
-                    {% if messages %}
-                    <ul class="messages">
-                        {% for message in messages %}
-                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
-                {% block content %}
-                {% endblock %}
-            </div>
-        </div>
+ <!-- Navigation Bar Section -->
+
+<nav class="navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{% url 'home_page' %}">PhotoGram</a>
     </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      {% if user.is_authenticated %}
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="{% url 'home_page' %}">Home</a></li>
+        <li><a href="{% url 'posts' %}">Post</a></li>
+        <li><a href="{% url 'music' %}">Music</a></li>
+        <li><a href="#">Album</a></li>
+        <li><a href="{% url 'follow' %}">Find People</a></li>
+        <li><a href="#">Welcome, {{ user.username }}. Thanks for logging in.</a></li>
+        <a href="{% url 'logout' %}" class="btn btn-primary btn-sm navbar-btn pull-right">Logout</a>
+      </ul>
+      {% else %}
+       <ul class="nav navbar-nav navbar-right">
+        <li><p class="navbar-text">Already have an account?</p></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+            <ul id="login-dp" class="dropdown-menu">
+                <li>
+                     <div class="row">
+                            <div class="col-md-12">
+                                Login via
+                                <div class="social-buttons">
+                                    <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+                                    <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+                                </div>
+                                or
+                                 <form class="form" role="form" method="POST" action="/login/" accept-charset="UTF-8" id="login-nav">{% csrf_token %}
+                                        <div class="form-group">
+                                             <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                                             <input type="text" class="form-control" id="email" name="email" placeholder="Enter email">
+                                        </div>
+                                        <div class="form-group">
+                                             <label class="sr-only" for="exampleInputPassword2">Password</label>
+                                             <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                                             <div class="help-block text-right"><a href="">Forget the password ?</a></div>
+                                        </div>
+                                        <div class="form-group">
+                                             <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                                        </div>
+                                        <div class="checkbox">
+                                             <label>
+                                             <input type="checkbox"> keep me logged-in
+                                             </label>
+                                        </div>
+                                 </form>
+                            </div>
+                            <div class="bottom text-center">
+                                    New here ? <a href="{% url 'signup' %}"><b>Join Us</b></a>
+                            </div>
+                     </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+  {% endif %}
+  </div>
+  </div>
+</nav>
+
+
+<!-- Portfolio Item Heading -->
+
+
+<div class="row">
+    <div class="col-md-12">
+
+
+            <!-- Portfolio Item Heading -->
+        {% block content %}
+        {% endblock %}
+
+
+    </div>
+</div>
+
+
 </body>
 
 

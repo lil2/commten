@@ -1,6 +1,13 @@
-from blogapp.models import Post
+from blogapp.models import Post, User
 from django import forms
 from pagedown.widgets import PagedownWidget
+from django.contrib.auth.forms import UserCreationForm
+
+
+class UserSignupForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = User
+        fields = UserCreationForm.Meta.fields
 
 
 class PostForm(forms.ModelForm):
