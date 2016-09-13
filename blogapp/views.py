@@ -1,8 +1,6 @@
-from django.contrib.auth.forms import UserCreationForm
 from django.db.models import Q
 from django.http import JsonResponse
-from django.shortcuts import render, redirect, HttpResponse, HttpResponseRedirect,reverse, render_to_response, get_object_or_404
-from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from rest_framework import viewsets
 from .serializers import PostSerializer
 from .models import Post, User
