@@ -21,5 +21,7 @@ urlpatterns = [
     url(r'^(?P<pk>[0-9]+)/delete/$', views.post_delete_view, name='delete'),
     url(r'music/$', views.music_view, name='music'),
     url(r'^api/', include(router.urls)),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    # Third Party Social Auth
+    url(r'', include('social.apps.django_app.urls', namespace='social')),
 ]

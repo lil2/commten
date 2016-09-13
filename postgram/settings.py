@@ -37,11 +37,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # REST framework
     'rest_framework',
+
+    # App name
     'blogapp',
+
+    # Third Party
     'pagedown',
     'crispy_forms',
     'widget_tweaks',
+
+    # Third Party Social
+    'social.apps.django_app.default',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
@@ -141,3 +150,19 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Social Third Party Plugin Auth
+AUTHENTICATION_BACKENDS = (
+   'social.backends.facebook.FacebookOAuth2',
+   'social.backends.twitter.TwitterOAuth',
+   'social.backends.google.GoogleOAuth2',
+   'django.contrib.auth.backends.ModelBackend',
+)
+
+# FaceBook Auth KEY and SECRET
+SOCIAL_AUTH_FACEBOOK_KEY = '1640707379552655'
+SOCIAL_AUTH_FACEBOOK_SECRET = '0f5481515c8a98241f9ae06a5165b5a8'
+
+# Google+ Auth KEY and SECRET
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '966708397792-rm33974l3lf84sk72v1kbgcs46ucdckr.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'BrGI6WJdwvLpG1jVHELyHsix'

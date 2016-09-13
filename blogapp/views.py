@@ -1,4 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
+from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, HttpResponse, HttpResponseRedirect,reverse, render_to_response, get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -91,7 +92,10 @@ class PostView(generic.ListView):
         if self.request.user.is_superuser:         # Superuser would be able to view all the post from all users
             return Post.objects.all()
         else:
-            return Post.objects.filter(author__in=User.objects.get(username=self.request.user).follows.all())
+            current_user = User.objects.get(username=self.request.user)
+            current_user_follow_objects = User.objects.get(username=self.request.user).follows.all()
+            print(current_user_follow_objects)
+            return Post.objects.filter(Q(author__in=current_user_follow_objects) | Q(author=current_user))
 
 
 # Generic DetailView for Post objects

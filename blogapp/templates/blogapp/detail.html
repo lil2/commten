@@ -3,9 +3,15 @@
 {% block content %}
 
 <div class="container">
-    <h5 class="text-center"> Detail </h5>
-    <div class="text-right"><a class="btn btn-default" href="{% url 'post_edit' pk=post_detail.pk%}">Edit</a></div>
-    <div class="text-right"><a class="btn btn-warning" href="{% url 'delete' pk=post_detail.pk%}">Delete</a></div>
+    <h1>Post Detail</h1>
+    <div class="page-header">
+        <div class="text-right">
+            <a class="btn btn-default" href="{% url 'post_edit' pk=post_detail.pk%}">Edit</a>
+            <a class="btn btn-warning" href="{% url 'delete' pk=post_detail.pk%}">Delete</a>
+        </div>
+    </div>
+
+    <div class="container-fluid">
     <div class="panel panel-info">
       <div class="panel-heading">
           <div class="pull-left">{{post_detail.title}}</div>
@@ -22,7 +28,7 @@
           {% endif %}
       </div>
     </div>
-
+    </div>
     <div>
         <div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-numposts="5"></div>
     </div>

@@ -3,6 +3,7 @@ html, body {
   overflow-x: hidden !important;
   z-index:1;
   font-family: "Abadi MT Condensed Extra Bold";
+  font-size: 16px;
 }
 
 
@@ -40,13 +41,13 @@ html, body {
     color: #fff;
     background-color:#496ebc
 }
-.btn-tw{
+.btn-gp{
     color: #fff;
-    background-color:#55acee;
+    background-color:#993300;
 }
-.btn-tw:hover{
+.btn-gp:hover{
     color: #fff;
-    background-color:#59b5fa;
+    background-color:#993333;
 }
 @media(max-width:768px){
     #login-dp{
@@ -61,7 +62,6 @@ html, body {
 
 
 /*  Index Picture with Title */
-
 #index-pic {
     background: url("../img/index_pic.jpg");
     width:100%;
@@ -72,14 +72,12 @@ html, body {
     position: relative;
 }
 
-
-/*  Override Bootstrap container */
-.container {
-  margin-top: 1% ;
-  width: 940px;
-  .center-block();
+#index_inner-text {
+    margin: 20% 10% 50% 60%;
 }
 
+
+/*  Override Bootstrap container */
 
 
 

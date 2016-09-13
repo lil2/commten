@@ -42,7 +42,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{% url 'home_page' %}">PhotoGram</a>
+      <a class="navbar-brand" href="{% url 'home_page' %}">PostGram</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       {% if user.is_authenticated %}
@@ -66,8 +66,8 @@
                             <div class="col-md-12">
                                 Login via
                                 <div class="social-buttons">
-                                    <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
-                                    <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+                                    <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+                                    <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}" class="btn btn-gp"><i class="fa fa-google-plus"></i> Google+</a>
                                 </div>
                                 or
                                  <form class="form" role="form" method="POST" action="/login/" accept-charset="UTF-8" id="login-nav">{% csrf_token %}

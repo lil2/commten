@@ -7,4 +7,4 @@ from selenium import webdriver
 class MyTest(LiveServerTestCase):
     def test_home_page(self):
         result = self.client.get('/posts/')
-        self.assertEqual(result.status_code, 200)
+        self.assertEqual(result.status_code, 302)
