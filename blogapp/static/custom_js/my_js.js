@@ -31,3 +31,10 @@ function follow_btn(caller) {
         }
     });
 }
+
+//alert testing
+$(function () {
+    $('#album').click(function () {
+    alert('Welcome to you album!');
+    });
+})

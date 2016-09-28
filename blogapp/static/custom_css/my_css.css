@@ -72,25 +72,69 @@ html, body {
     position: relative;
 }
 
-#index_inner-text {
-    margin: 20% 10% 50% 60%;
+@media only screen and (min-width: 1261px) {
+    #index_inner-text {
+        width: 40%;
+        left: 55%;
+        top: 25%;
+        font-size: 20%;
+        position: relative;
+    }
+}
+@media only screen and (max-width: 1260px) and (min-width: 1160px){
+    #index_inner-text {
+        width: 100%;
+        top:40%;
+        left:3%;
+        position: relative;
+    }
+}
+
+@media only screen and (max-width: 1159px){
+    #index_inner-text {
+        width: 60%;
+        margin:auto;
+        top:32%;
+        left:3%;
+        position: relative;
+    }
+}
+
+/*  adding grid style for language logo in index page */
+
+.grid-inside {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.grid-inside-logo{
+    width: 10%;
+    margin: 0 2.5%;
+}
+
+@media only screen and (max-width: 500px){
+    .grid-inside-logo {
+        width: 10%;
+        margin: 0 10%;
+    }
 }
 
 
-/*  Override Bootstrap container */
 
+/*  Setting border style for find people section */
 
 
 .bs-callout{
   padding: 20px;
   margin: 20px 0;
   border: 1px solid #eee;
-  border-left-width: 5px;
-  border-radius: 3px;
+  border-left-width: 4px;
+  border-radius: 20px;
 }
 
 .bs-callout-info{
-  border-left-color: #1b80ee;
+  border-left-color: #913421;
+
 }
 
 .wmd-panel{
