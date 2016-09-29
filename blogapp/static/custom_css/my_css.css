@@ -97,7 +97,7 @@ html, body {
         top:32%;
         left:3%;
         position: relative;
-    }}
+    }
 }
 
 /*  adding grid style for language logo in index page */
@@ -119,10 +119,40 @@ html, body {
     }
 }
 
+/* adding thumbnail for index page */
+.cards-container{
+    margin-top: 20px;
+
+}
+.cards-container > .cards{
+    margin-top: inherit;
+}
+
+.cards-container > .cards > .card {
+    width: 30%;
+    margin: 1%;
+    float: left;
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)
+}
+
+@media only screen and (max-width: 1000px) {
+    .cards-container > .cards > .card {
+        width: 80%;
+        clear: both;
+        margin: 5% auto;
+
+        float: none;
+        box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+    }
+}
+.card-text{
+    text-align: center;
+    padding: 20px;
+}
+
 
 
 /*  Setting border style for find people section */
-
 
 .bs-callout{
   padding: 20px;
