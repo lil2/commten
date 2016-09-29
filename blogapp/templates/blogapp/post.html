@@ -3,6 +3,12 @@
 {% block content %}
 <div class="container">
     <h1>Post List</h1>
+    <form method="GET">{% csrf_token %}
+        <div class="input-group col-md-2">
+            <input name="q" type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-btn"><button class="btn btn-default" type="submit">Go!</button></span>
+        </div>
+    </form>
     <div class="page-header" ></div>
     <div><a href="{% url 'new_post'%}">Add New Post</a></div>
     <ul>

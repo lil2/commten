@@ -6,6 +6,10 @@ html, body {
   font-size: 16px;
 }
 
+a{
+    cursor:pointer
+}
+
 
 /*  Login Drop Down  */
 
@@ -110,14 +114,20 @@ html, body {
 .grid-inside-logo{
     width: 10%;
     margin: 0 2.5%;
+    transition: transform 2s;
+    transition-timing-function: ease-out;
 }
-
+.grid-inside-logo:hover{
+    transform: rotateY(180deg);
+}
 @media only screen and (max-width: 500px){
     .grid-inside-logo {
         width: 10%;
         margin: 0 10%;
     }
 }
+
+
 
 /* adding thumbnail for index page */
 .cards-container{
@@ -145,10 +155,12 @@ html, body {
         box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
     }
 }
+
 .card-text{
     text-align: center;
     padding: 20px;
 }
+
 
 
 

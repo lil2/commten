@@ -92,7 +92,10 @@ class PostView(generic.ListView):
         else:
             current_user = User.objects.get(username=self.request.user)
             current_user_follow_objects = User.objects.get(username=self.request.user).follows.all()
-            print(current_user_follow_objects)
+            search_keyword = self.request.GET.get('q')
+            if search_keyword:
+                return Post.objects.filter(Q(title__icontains=str(search_keyword)) &
+                                           (Q(author=current_user) | Q(author__in=current_user_follow_objects)) )
             return Post.objects.filter(Q(author__in=current_user_follow_objects) | Q(author=current_user))
 
 
