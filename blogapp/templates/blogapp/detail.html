@@ -6,8 +6,10 @@
     <h1>Post Detail</h1>
     <div class="page-header">
         <div class="text-right">
+            {% if request.user == post_detail.author %}
             <a class="btn btn-default" href="{% url 'post_edit' pk=post_detail.pk%}">Edit</a>
             <a class="btn btn-warning" href="{% url 'delete' pk=post_detail.pk%}">Delete</a>
+            {% endif %}
         </div>
     </div>
 
