@@ -2,8 +2,7 @@
 {% load staticfiles %}
 {% block content %}
 
-
-<!-- Index Page Picture with Title  -->
+<!-- Index Page Full Screen Picture with Title  -->
 
 <div id="index-pic">
     <div id="index_inner-text">
@@ -17,6 +16,8 @@
 <!-- Home Page Content -->
 
 <div class="container">
+
+    <!-- Language Icon -->
     <div class="page-header">
         <div class="row">
             <div class="grid-inside">
@@ -29,9 +30,47 @@
             </div>
         </div>
     </div>
+
+    <!-- Thumbnail Cards -->
     <div class="container cards-container">
         <h2 class="text-center">
             SHARE THE THINGS IN YOUR MIND
+        </h2>
+        <div class="row cards">
+            <div class="card">
+                <img class="img-responsive" src="{% static 'img/creative.jpg' %}">
+                <div class="card-text">
+                    <a>Creativity</a>
+                    <p><small>Improve your imagination by others</small></p>
+                </div>
+            </div>
+            <div class="card">
+                <img class="img-responsive" src="{% static 'img/moment.jpg' %}">
+                <div class="card-text">
+                    <a>Moment</a>
+                    <p><small>Capture every valuable moment</small></p>
+                </div>
+            </div>
+            <div class="card"><img class="img-responsive" src="{% static 'img/connect.jpg' %}">
+                <div class="card-text">
+                    <a>Connect</a>
+                    <p><small>Interact with other social network</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- SubSection Banner -->
+
+<div id="sub-section">
+    <div>You Move Others and You Get Moved by Others</div>
+</div>
+
+<div class="container">
+    <!-- SubSection Thumbnail Cards -->
+    <div class="container cards-container">
+        <h2 class="text-center">
+            CHECK OUT OUR LATEST POSTS TODAY BRING YOUR LIFE FROM GREY TO COLOR
         </h2>
         <div class="row cards">
             <div class="card">
