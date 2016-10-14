@@ -3,13 +3,13 @@
 {% block content %}
 <div class="container">
 {% if user.is_authenticated %}
-<div class="alert alert-success" role="alert">
+<div class="alert alert-success" role="alert" style="margin-top: 5%;">
 You're logging in successfully!!! Redirecting to home page in 3 seconds.
 <p><a href="{{ home }}">Back to Home Page</a></p>
 <meta http-equiv="refresh" content="3;url={{ home }}">
 </div>
 {% else %}
-<div class="alert alert-danger" role="alert">
+<div class="alert alert-danger" role="alert" style="margin-top:5%;">
   <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
   <span class="sr-only">Error:</span>
   The username and password were incorrect or blank. Please re-enter again.

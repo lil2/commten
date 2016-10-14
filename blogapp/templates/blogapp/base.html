@@ -21,7 +21,7 @@
 <!-- Body Section -->
 
 <body>
-
+<div class="page-wrap">
 <!-- FaceBook Comment Plugin Section -->
 
 <div id="fb-root"></div>
@@ -54,7 +54,7 @@
         <li><a href="{% url 'music' %}">Music</a></li>
         <li><a href="#" id="album">Album</a></li>
         <li><a href="{% url 'follow' %}">Find People</a></li>
-        <li><a href="#">Welcome, {{ user.username }}. Thanks for logging in.</a></li>
+        <li><a href="#" id="login_user">Welcome, {{ user.username }}. Thanks for logging in.</a></li>
         <a href="{% url 'logout' %}" class="btn btn-primary btn-sm navbar-btn pull-right">Logout</a>
       </ul>
       {% else %}
@@ -115,36 +115,36 @@
 
     </div>
 </div>
-
-<!--Footer-->
-<div class="footer-wrapper">
-    <footer>
-        <div class="container site-info">
-            <div class="row">
-                <div class="col-md-6 text-center">
-                    <address>
-                      <h2>Like What You See Here?</h2>
-                      <p>Let me know if you find anything that interest you</p>
-                      <p>I'm here to share and learn</p>
-                      <p></p><strong>Wentworth Institute of Technology   |   550 Huntington Avenue   |   Boston, MA 02115   |   617-989-4590</strong></p><br>
-                    </address>
-                </div>
-                <div class="col-md-6">
-                    <div class=" text-center">
-                        <h1>I'M: </h1>
-                        <h3><strong>Weijie Lin</strong><br><a href="mailto:#">linw3@wit.edu</a></h3><br>
-                    </div>
-                </div>
-            <div class="col-md-6 text-center">
-                <a href="https://www.facebook.com/jervis.lin.1"><i class="fa fa-facebook fa-1x" style="color:white; padding: 10px;"></i></a>
-                <a href="https://www.linkedin.com/pub/weijie-lin/a8/27b/61b"><i class="fa fa-linkedin fa-1x" style="color:white; padding: 10px;"></i></a>
-                <a href="https://github.com/jervislam0911/Postgram"><i class="fa fa-github fa-1x" style="color:white; padding: 10px;"></i></a>
-            </div>
-            </div>
-            <div class="col-md-12 text-center">© 2016 All Right Reserved by PostGram</div>
-        </div>
-    </footer>
 </div>
+<!--Footer-->
+
+<footer class="site-footer">
+    <div class="container site-info">
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <address>
+                  <h2>Like What You See Here?</h2>
+                  <p>Let me know if you find anything that interest you</p>
+                  <p>I'm here to share and learn</p>
+                  <p></p><strong>Wentworth Institute of Technology   |   550 Huntington Avenue   |   Boston, MA 02115   |   617-989-4590</strong></p><br>
+                </address>
+            </div>
+            <div class="col-md-6">
+                <div class=" text-center">
+                    <h1>I'M: </h1>
+                    <h3><strong>Weijie Lin</strong><br><a href="mailto:#">linw3@wit.edu</a></h3><br>
+                </div>
+            </div>
+        <div class="col-md-6 text-center">
+            <a href="https://www.facebook.com/jervis.lin.1"><i class="fa fa-facebook fa-1x" style="color:white; padding: 10px;"></i></a>
+            <a href="https://www.linkedin.com/pub/weijie-lin/a8/27b/61b"><i class="fa fa-linkedin fa-1x" style="color:white; padding: 10px;"></i></a>
+            <a href="https://github.com/jervislam0911/Postgram"><i class="fa fa-github fa-1x" style="color:white; padding: 10px;"></i></a>
+        </div>
+        </div>
+        <div class="col-md-12 text-center">© 2016 All Right Reserved by PostGram</div>
+    </div>
+</footer>
+
 </body>
 
 

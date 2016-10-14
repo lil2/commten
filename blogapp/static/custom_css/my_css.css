@@ -187,25 +187,29 @@ a{
     text-transform: uppercase;
 }
 
-.footer-wrapper{
-    position: relative;
-    width: 100%;
-    margin-top: 25%;
-    bottom: 0;
-    margin-bottom: 0;
+.page-wrap{
+    min-height: 100%;
+    margin-bottom: -450px;
+}
+
+.page-wrap:after{
+    content: "";
+    display: block;
+}
+
+.site-footer, .page-wrap:after{
+    height: 450px;
 
 }
 
-footer{
+.site-footer{
     width: 100%;
-    height: auto;
     background: black;
-    display: block;
-
 }
 
 .site-info{
     color: white;
+    padding: 2%;
     opacity: 0.9;
 }
 
