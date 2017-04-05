@@ -1,0 +1,14 @@
+
+{% extends 'commten/base.html' %}
+
+{% block content %}
+<!--<div class="banner" data-attr="" data-attr-second="">-->
+<!--</div>-->
+<div style="margin-top:80px;">
+    <h1>New comment</h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Send</button>
+    </form>
+</div>
+{% endblock %}

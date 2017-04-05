@@ -1,0 +1,22 @@
+{% extends 'commten/base.html' %}
+{% block pagedown %}
+     {{ post_form.media }}
+{% endblock pagedown %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+    {% url 'post_edit' as post_edit %}
+    {% if request.current_url in post_edit %}
+    <h1>Post Edit</h1>
+    {% else %}
+    <h1>Create New Post</h1>
+    {% endif %}
+    <div class="page-header" ></div>
+    <form method="POST" class="post-form" enctype="multipart/form-data">{% csrf_token %}
+        {{ post_form|crispy}}
+        <button type="submit" class="btn btn-primary">Post</button>
+    </form>
+</div>
+
+{% endblock %}

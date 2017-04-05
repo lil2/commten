@@ -7,7 +7,7 @@ if django.VERSION >= (1, 7):  # check version
 
 
 def main():
-    from blogapp.models import Post, User
+    from commten.models import Post, User
     with open('db.txt') as f:
         for line in f:
             author, title, content = line.split('****')

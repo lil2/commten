@@ -1,0 +1,83 @@
+{% extends 'commten/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<div class="container">
+    <h1>Post Detail</h1>
+    <div class="page-header">
+        <div class="text-right">
+            {% if request.user == post_detail.author or request.user.is_superuser %}
+            <a class="btn btn-default" href="{% url 'post_edit' pk=post_detail.pk%}">Edit</a>
+            <a class="btn btn-warning" href="{% url 'delete' pk=post_detail.pk%}">Delete</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="container-fluid">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+          <div class="pull-left">{{post_detail.title}}</div>
+          <div class="text-right">{{ post_detail.create_date }}</div>
+      </div>
+      <div class="panel-body">
+          <dl>
+            <dt>Author: {{ post_detail.author}}</dt>
+              <br/>
+              <dt> Apt#:{{apt}}</dt>
+              <br/>
+              <dt>Address: {{address }}</dt>
+              <br/>
+            <dd>Status:
+
+                {% if post_detail.status == True %}
+                  Active
+
+                  {% else %}
+                  Close
+              {% endif %}</dd>
+            <br/>
+            <dt>Type: {{ post_detail.type}}</dt>
+            <br/>
+            <dt>Issue:
+
+                <div style="border: 1px solid black; padding: 20px 50px 50px 30px;">
+                <article class="content-markdown ">{{ post_detail.body}}</article>
+          {% if post_detail.image %}
+          <img src='{{ post_detail.image.url }}' class="img-responsive"/>
+          {% endif %}
+              </div>
+            </dt>
+        </dl>
+      </div>
+    </div>
+    </div>
+
+
+<a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post_detail.pk %}">Add comment</a>
+
+    <hr>
+    {% for comment in post_detail.comments.all %}
+        {% if user.is_authenticated or comment.approved_comment %}
+        <div class="comment">
+            <div class="date">
+                {{ comment.created_date }}
+                {% if not comment.approved_comment %}
+                    <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+                    <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
+                {% endif %}
+            </div>
+            <strong>{{ comment.author }}</strong>
+            <p>{{ comment.text|linebreaks }}</p>
+        </div>
+        {% endif %}
+    {% empty %}
+        <p>No comments here yet :(</p>
+    {% endfor %}
+    <nav aria-label="...">
+      <ul class="pager">
+        <li {% if not previous %}class="disabled" {% endif %}><a {% if previous %} href="{% url 'detail' pk=previous.pk%}" {% endif %}>Previous</a></li>
+        <li {% if not next %}class="disabled" {% endif %}><a {% if next %} href="{% url 'detail' pk=next.pk%}" {% endif %}>Next</a></li>
+      </ul>
+    </nav>
+</div>
+{% endblock %}
