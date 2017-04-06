@@ -41,7 +41,7 @@ def login_view(request):
         if user is not None:
             login(request, user)
         return render(request, 'commten/login_info.html')
-    return redirect("NoticeBoard")
+    return redirect("posts")
 
 
 # User Signup View
