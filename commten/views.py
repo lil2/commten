@@ -28,6 +28,8 @@ User = get_user_model()
 def home_page(request):
     return render(request, 'commten/home.html')
 
+def privacy(request):
+    return render(request, 'commten/privacy.html')
 
 def noticeboard_page(request):
     return render(request, 'commten/NoticeBoard.html')

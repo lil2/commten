@@ -45,12 +45,13 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="{% url 'home_page' %}">CommTen</a>
+      <a class="navbar-brand" href="{% url 'privacy' %}">Privacy Policy</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       {% if user.is_authenticated %}
       <ul class="nav navbar-nav">
         <li class="active"><a href="{% url 'home_page' %}">Home</a></li>
-        <li><a href="{% url 'NoticeBoard' %}">Notice Board</a></li>
+        <li><a href="{% url 'NoticeBoard' %}">NoticeBoard</a></li>
         <li><a href="{% url 'posts' %}">Tickets</a></li>
         <li><a href="{% url 'account_update' pk=user.id %}">Profile</a></li>
         <li><a href="#" id="login_user">Welcome, {{ user.username }}. Thanks for logging in.</a></li>

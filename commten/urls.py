@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 urlpatterns = [
     url(r'^$', views.home_page, name='home_page'),
     url(r'^noticeboard/$', views.noticeboard_page, name='NoticeBoard'),
+    url(r'^privacy/$', views.privacy, name='privacy'),
     url(r'^login/$', views.login_view, name='login'),
     url(r'^logout/$', lambda request: logout(request, "/"), name='logout'),
     url(r'^signup/$', views.signup_view, name='signup'),
